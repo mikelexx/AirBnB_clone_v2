@@ -8,7 +8,6 @@ from models.amenity import Amenity
 from models.review import Review
 from models.place import Place
 from models.base_model import BaseModel
-
 """This module instantiates an object of class FileStorage
 or Database storage accoring to storage type in the environment"""
 if os.getenv("HBNB_TYPE_STORAGE") == "db":
