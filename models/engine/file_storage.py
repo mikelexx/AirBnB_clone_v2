@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-"""This module defines a class to manage file storage for hbnb clone"""
+"""
+This module defines a class to manage file storage for hbnb clone
+It contains the methods for adding new object to file storage objects
+and saving them among others.
+"""
 from models.user import User
 from models.place import Place
 from models.city import City
