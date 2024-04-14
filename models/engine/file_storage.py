@@ -9,6 +9,15 @@ from models.state import State
 
 import json
 
+classes = {
+    "User": User,
+    "Place": Place,
+    "State": State,
+    "Review": Review,
+    "City": City,
+    "Amenity": Amenity
+}
+
 
 class FileStorage:
     """This class manages storage of hbnb models in JSON format"""
