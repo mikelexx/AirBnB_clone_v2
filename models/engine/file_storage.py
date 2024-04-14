@@ -23,12 +23,15 @@ classes = {
 
 
 class FileStorage:
-    #"""This class manages storage of hbnb models in JSON format"""
+    """This class manages storage of hbnb models in JSON format"""
     __file_path = 'file.json'
     __objects = {}
 
     def all(self, cls=None):
-        """Returns a dictionary of models currently in storage"""
+        """
+        Returns a dictionary of models currently in storage
+        Args: 
+            cls (str): class to be queried for objects"""
         if cls:
             objects = {}
             if type(cls) is str and cls in classes:
@@ -46,7 +49,8 @@ class FileStorage:
     def new(self, obj):
         """Adds new object to storage dictionary
         dict.update() inserts specified objects to the dictionary
-        Args: obj (object) : object to update
+        Args:
+            obj (object) : object to update
         """
         dict_obj = obj.to_dict()
         self.all().update({dict_obj['__class__'] + '.' + obj.id: obj})
@@ -64,7 +68,8 @@ class FileStorage:
             json.dump(temp, f)
 
     def delete(self, obj=None):
-        """ delete obj from __objects if it’s inside - if obj is equal to
+        """ 
+        delete obj from __objects if it’s inside - if obj is equal to
         None, the method should not do anything
         Args:
             obj (object): object to delete
