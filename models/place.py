@@ -32,11 +32,12 @@ class Place(BaseModel, Base):
         number_bathrooms = Column(Integer, nullable=False, default=0)
         max_guest = Column(Integer, nullable=False, default=0)
         price_by_night = Column(Integer, nullable=False, default=0)
+        amenity_ids = []
         lattitude = Column(Integer, nullable=True)
         longitude = Column(Float, nullable=True)
         reviews = relationship("Review",
                                backref="place",
-                               cascade="all, delete-orphan")
+                               cascade="all, delete, delete-orphan")
         amenities = relationship("Amenity",
                                  secondary=place_amenity,
                                  back_populates="place_amenities",
