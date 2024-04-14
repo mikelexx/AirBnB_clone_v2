@@ -60,7 +60,7 @@ class FileStorage:
             json.dump(temp, f)
 
     def delete(self, obj=None):
-        """ delete obj from __objects if it’s inside - if obj is equal to 
+        """ delete obj from __objects if it’s inside - if obj is equal to
         None, the method should not do anything
         Args:
             obj (object): object to delete
