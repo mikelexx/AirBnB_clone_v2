@@ -58,7 +58,9 @@ class Place(BaseModel, Base):
         @property
         def reviews(self):
             """
-getter attribute reviews that returns the list of Review instances with place_id equals to the current Place.id => It will be the FileStorage relationship between Place and Review
+getter attribute reviews that returns the list of Review\
+instances with place_id equals to the current Place.id => It will be \
+the FileStorage relationship between Place and Review
 """
             from models.review import Review
             reviews = []
@@ -70,7 +72,8 @@ getter attribute reviews that returns the list of Review instances with place_id
         @property
         def amenities(self):
             """
-            that returns the list of Amenity instances based on the attribute amenity_ids that contains all Amenity.id linked to the Place
+            that returns the list of Amenity instances based on the attribute\
+            amenity_ids that contains all Amenity.id linked to the Place
 """
             from models import storage
             from models.amenity import Amenity
@@ -83,7 +86,9 @@ getter attribute reviews that returns the list of Review instances with place_id
         @amenities.setter
         def amenities(self, obj):
             """
-            handles append method for adding an Amenity.id to the attribute amenity_ids. This method should accept only Amenity object, otherwise, do nothing.
+            handles append method for adding an Amenity.id to the attribute
+            amenity_ids. This method should accept only Amenity object,
+            otherwise, do nothing.
             """
             from models.amenity import Amenity
             if isinstance(obj, Amenity):
