@@ -430,8 +430,9 @@ Update User: (models/user.py)
 	- class attribute last_name
 		- represents a column containing a string (128 characters)
 		- can be null
-		```
-		guillaume@ubuntu:~/AirBnB_v2$ echo 'create User email="gui@hbtn.io" password="guipwd" first_name="Guillaume" last_name="Snow"' | HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db ./console.py
+
+```
+guillaume@ubuntu:~/AirBnB_v2$ echo 'create User email="gui@hbtn.io" password="guipwd" first_name="Guillaume" last_name="Snow"' | HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db ./console.py
 (hbnb) 4f3f4b42-a4c3-4c20-a492-efff10d00c0b
 (hbnb)
 guillaume@ubuntu:~/AirBnB_v2$
@@ -504,8 +505,8 @@ mandatory
 	- Update City: (models/city.py)
 		- Add or replace in the class City:
 			- class attribute places must represent a relationship with the class Place. If the City object is deleted, all linked Place objects must be automatically deleted. Also, the reference from a Place object to his City should be named cities
-				```
-				   guillaume@ubuntu:~/AirBnB_v2$ echo 'create Place city_id="4b457e66-c7c8-4f63-910f-fd91c3b7140b" user_id="4f3f4b42-a4c3-4c20-a492-efff10d00c0b" name="Lovely_place" number_rooms=3 number_bathrooms=1 max_guest=6 price_by_night=120 latitude=37.773972 longitude=-122.431297' | HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db ./console.py
+```
+guillaume@ubuntu:~/AirBnB_v2$ echo 'create Place city_id="4b457e66-c7c8-4f63-910f-fd91c3b7140b" user_id="4f3f4b42-a4c3-4c20-a492-efff10d00c0b" name="Lovely_place" number_rooms=3 number_bathrooms=1 max_guest=6 price_by_night=120 latitude=37.773972 longitude=-122.431297' | HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db ./console.py
 (hbnb) ed72aa02-3286-4891-acbc-9d9fc80a1103
 (hbnb)
 guillaume@ubuntu:~/AirBnB_v2$
@@ -557,8 +558,8 @@ mandatory
 - Update Place: (models/place.py)
 	- for DBStorage: class attribute reviews must represent a relationship with the class Review. If the Place object is deleted, all linked Review objects must be automatically deleted. Also, the reference from a Review object to his Place should be named place
 	- for FileStorage: getter attribute reviews that returns the list of Review instances with place_id equals to the current Place.id => It will be the FileStorage relationship between Place and Review
-		 ```
-		    guillaume@ubuntu:~/AirBnB_v2$
+```
+guillaume@ubuntu:~/AirBnB_v2$
 guillaume@ubuntu:~/AirBnB_v2$ echo 'create User email="bob@hbtn.io" password="bobpwd" first_name="Bob" last_name="Dylan"' | HBNB_MYSQL_USER=hbnb_dev HBNB_MYSQL_PWD=hbnb_dev_pwd HBNB_MYSQL_HOST=localhost HBNB_MYSQL_DB=hbnb_dev_db HBNB_TYPE_STORAGE=db ./console.py
 (hbnb) d93638d9-8233-4124-8f4e-17786592908b
 (hbnb)
@@ -583,6 +584,7 @@ updated_at: 2017-11-10 04:06:25
 guillaume@ubuntu:~/AirBnB_v2$
 ```
 File: `models/review.py, models/user.py, models/place.py`
+
 10. DBStorage - Amenity... and BOOM!
 mandatory
 - Update Amenity: (models/amenity.py)
