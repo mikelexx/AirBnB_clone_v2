@@ -16,7 +16,6 @@ if getenv("HBNB_TYPE_STORAGE") == "db":
             nullable=False),
         Column('amenity_id',
                String(60),
-               unique=True,
                ForeignKey('amenities.id'),
                nullable=False))
 
