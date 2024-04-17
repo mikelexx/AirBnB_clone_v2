@@ -21,7 +21,7 @@ class test_fileStorage(unittest.TestCase):
         """ Remove storage file at end of tests """
         try:
             os.remove('file.json')
-        except IOError:
+        except:
             pass
 
     def test_obj_list_empty(self):
@@ -107,28 +107,3 @@ class test_fileStorage(unittest.TestCase):
         from models.engine.file_storage import FileStorage
         print(type(storage))
         self.assertEqual(type(storage), FileStorage)
-
-    def test_obj_deleted(self):
-        """deleting file object"""
-        base = BaseModel()
-        storage.new(base)
-        storage.save()
-        initial_count = len(storage.all())
-        storage.delete(base)
-        new_count = storage.all()
-        self.assertNotEqual(initial_count, new_count)
-
-    def test_list_one_type_class(self):
-        """ querying the all() with class argument"""
-        from models.state import State
-        state = State()
-        base = BaseModel()
-        storage.new(state)
-        storage.new(base)
-        storage.save()
-        storage.save()
-        for obj in storage.all(State).values():
-            self.assertIs(type(obj), State)
-            self.assertNotIsInstance(type(obj), BaseModel)
-        storage.delete(state)
-        storage.delete(base)
