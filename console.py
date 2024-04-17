@@ -160,7 +160,7 @@ class HBNBCommand(cmd.Cmd):
         """Updates an instanceby adding or updating attribute
         Exceptions:
             SyntaxError: when there is no args given
-            NameError: when there is no object that has the name
+            NameError: when there is no object taht has the name
             IndexError: when there is no id given
             KeyError: when there is no valid id given
             AttributeError: when there is no attribute given
@@ -270,4 +270,3 @@ class HBNBCommand(cmd.Cmd):
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
-
