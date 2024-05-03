@@ -740,7 +740,9 @@ guillaume@ubuntu:~/AirBnB_v2$
 file: `models/amenity.py, models/place.py`
 
 **DEPLOY STATIC**
-Background Context
+
+**Background Context**
+
 Ever since you completed project 0x0F. Load balancer of the SysAdmin track, you’ve had 2 web servers + 1 load balancer but nothing to distribute with them.
 
 It’s time to make your work public!
@@ -760,6 +762,7 @@ Read or watch:
 - [Difference between root and alias on NGINX](https://intranet.alxswe.com/rltoken/jgPdZF4sWxGLhs7uhYOONw)
 - [Fabric for Python 3](https://intranet.alxswe.com/rltoken/ljadvnqOr21Gy_UsVRIUPQ)
 - [Fabric Documentation](https://intranet.alxswe.com/rltoken/iVwVTXoFjfHxJMnL_JlSpg)
+- [Difference between root and alias on NGINX](https://stackoverflow.com/questions/10631933/nginx-static-file-serving-confusion-with-root-alias)
 **Learning Objectives**
 At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
 
@@ -773,6 +776,7 @@ At the end of this project, you are expected to be able to explain to anyone, wi
 - How to manage Nginx configuration
 - What is the difference between root and alias in a Nginx configuration
 **Install Fabric for Python 3 - version 1.14.post1**
+```
 $ pip3 uninstall Fabric
 $ sudo apt-get install libffi-dev
 $ sudo apt-get install libssl-dev
@@ -786,7 +790,8 @@ $ pip3 install cryptography==2.8
 $ pip3 install bcrypt==3.1.7
 $ pip3 install PyNaCl==1.3.0
 $ pip3 install Fabric3==1.14.post1
-Tasks
+```
+**Tasks**
 0. Prepare your web servers
 mandatory
 Write a Bash script that sets up your web servers for the deployment of web_static. It must:
