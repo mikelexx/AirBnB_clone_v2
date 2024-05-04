@@ -7,6 +7,7 @@ from datetime import datetime
 from fabric.api import *
 import os
 
+env.user = "ubuntu"
 env.hosts = ['54.209.136.208', '54.146.59.67']
 
 
@@ -17,14 +18,23 @@ def do_deploy(archive_path):
     if archive_path:
         try:
             put(archive_path, '/tmp/')
-            with cd('/tmp'):
-                parent_path, filename = os.path.split(archive_path)
-                dest_folder = "/data/web_static/releases/{}".format(
-                    filename.split(".tgz")[0])
-                run("tar -xzcf -C {} {}").format(archive_path, dest_folder)
-                run("rm {}".format(archive_path))
-                run("rm -rf /data/web_static/current")
-                run("ln -s {} /data/web_static/current".format(dest_folder))
+            parent_path, arch_file = os.path.split(archive_path)
+            arch_file_no_ext = arch_file.split(".tgz")[0]
+            run("mkdir -p /data/web_static/releases/{}/".format(
+                arch_file_no_ext))
+            run("tar -xzvf /tmp/{} -C /data/web_static/releases/{}/".format(
+                arch_file, arch_file_no_ext))
+            # decompresed files will begin with foldername/filename,
+            # but we want to keep only the file name
+            run("mv /data/web_static/releases/{}/web_static/*\
+                    /data/web_static/releases/{}/"
+                .format(arch_file_no_ext, arch_file_no_ext))
+            run("rm -rf /data/web_static/releases/{}/web_static".format(
+                arch_file_no_ext))
+            run("rm -r /tmp/{}".format(arch_file))
+            run("rm -rf /data/web_static/current")
+            run("ln -s /data/web_static/releases/{}/ /data/web_static/current".
+                format(arch_file_no_ext))
             return True
         except Exception as e:
             print("Erros occured: ", e)
