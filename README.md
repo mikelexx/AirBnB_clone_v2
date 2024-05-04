@@ -791,6 +791,9 @@ $ pip3 install bcrypt==3.1.7
 $ pip3 install PyNaCl==1.3.0
 $ pip3 install Fabric3==1.14.post1
 ```
+**OR**
+use the fabric3 sandbox provided if the fabric has incompatibility problems
+
 **Tasks**
 0. Prepare your web servers
 mandatory
