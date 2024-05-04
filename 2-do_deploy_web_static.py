@@ -3,7 +3,6 @@
 Fabric script (based on the file 1-pack_web_static.py) that
 distributes an archive to your web servers, using the function do_deploy:
 """
-from datetime import datetime
 from fabric.api import *
 import os
 
@@ -41,3 +40,14 @@ def do_deploy(archive_path):
         print("Erros occured: ", e)
         return False
     return True
+
+def do_pack():
+    try:
+        archive_path = "versions/web_static_{}.tgz".format(datetime.now().strftime("%Y%m%d%H%M%S"))
+        local("mkdir -p versions")
+        local("tar -cvzf {} web_static".format(archive_path))
+        print("web_static packed: {} -> {}Bytes".format(archive_path, os.path.getsize(archive_path)))
+        return archive_path
+    except:
+        print("wtf")
+        return None
