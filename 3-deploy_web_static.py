@@ -9,7 +9,7 @@ import os
 
 env.hosts = ['54.209.136.208', '54.146.59.67']
 
-
+@runs_once
 def do_pack():
     try:
         archive_path = "versions/web_static_{}.tgz".format(
