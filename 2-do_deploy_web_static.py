@@ -14,7 +14,6 @@ def do_deploy(archive_path):
     """
     distributes an archive to your web servers, using the function do_deploy:
     """
-    def do_deploy(archive_path):
     temp = archive_path.split(".tgz")
     arch_file_path = "".join(temp)
     b_list = arch_file_path.split("versions/")
