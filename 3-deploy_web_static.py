@@ -10,6 +10,19 @@ import os
 env.hosts = ['54.209.136.208', '54.146.59.67']
 
 
+def do_pack():
+    try:
+        archive_path = "versions/web_static_{}.tgz".format(
+            datetime.now().strftime("%Y%m%d%H%M%S"))
+        local("mkdir -p versions")
+        local("tar -cvzf {} web_static".format(archive_path))
+        print("web_static packed: {} -> {}Bytes".format(
+            archive_path, os.path.getsize(archive_path)))
+        return archive_path
+    except Exception:
+        return None
+
+
 def do_deploy(archive_path):
     """
     distributes an archive to your web servers, using the function do_deploy:
@@ -39,19 +52,6 @@ def do_deploy(archive_path):
         print("Erros occured: ", e)
         return False
     return True
-
-
-def do_pack():
-    try:
-        archive_path = "versions/web_static_{}.tgz".format(
-            datetime.now().strftime("%Y%m%d%H%M%S"))
-        local("mkdir -p versions")
-        local("tar -cvzf {} web_static".format(archive_path))
-        print("web_static packed: {} -> {}Bytes".format(
-            archive_path, os.path.getsize(archive_path)))
-        return archive_path
-    except Exception:
-        return None
 
 
 def deploy():
