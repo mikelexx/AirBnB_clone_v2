@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #Bash script that sets up your web servers for the deployment of web_static
-if ! which nginx > /dev/null
+if ! command -v nginx > /dev/null
 then
 	sudo apt -y update
 	sudo apt-get -y upgrade

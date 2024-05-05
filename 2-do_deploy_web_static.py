@@ -16,38 +16,21 @@ def do_deploy(archive_path):
     """
     if not os.path.exists(archive_path):
         return False
+    arch_file = os.path.basename(archive_path)
+    arch_folder = arch_file.replace(".tgz", "")
+    dest_folder = "/data/web_static/releases/{}/".format(arch_folder)
+    status = False
     try:
-        put(archive_path, '/tmp/')
-        parent_path, arch_file = os.path.split(archive_path)
-        arch_file_no_ext = arch_file.split(".tgz")[0]
-        run("mkdir -p /data/web_static/releases/{}/".format(
-            arch_file_no_ext))
-        run("tar -xzvf /tmp/{} -C /data/web_static/releases/{}/".format(
-            arch_file, arch_file_no_ext))
-        # decompresed files will begin with foldername/filename,
-        # but we want to keep only the file name
-        run("mv /data/web_static/releases/{}/web_static/*\
-                /data/web_static/releases/{}/"
-            .format(arch_file_no_ext, arch_file_no_ext))
-        run("rm -rf /data/web_static/releases/{}/web_static".format(
-            arch_file_no_ext))
-        run("rm -r /tmp/{}".format(arch_file))
+        put(archive_path, "/tmp/{}".format(arch_file))
+        run("mkdir -p {}".format(dest_folder))
+        run("tar -xzf /tmp/{} -C {}".format(arch_file, dest_folder))
+        run("rm -rf /tmp/{}".format(arch_file))
+        run("mv {}web_static/* {}".format(dest_folder, dest_folder))
+        run("rm -rf {}web_static".format(dest_folder))
         run("rm -rf /data/web_static/current")
-        run("ln -s /data/web_static/releases/{}/ /data/web_static/current".
-            format(arch_file_no_ext))
+        run("ln -s {} /data/web_static/current".format(dest_folder))
         print('New version deployed!')
-    except Exception as e:
-        print("Erros occured: ", e)
-        return False
-    return True
-
-def do_pack():
-    try:
-        archive_path = "versions/web_static_{}.tgz".format(datetime.now().strftime("%Y%m%d%H%M%S"))
-        local("mkdir -p versions")
-        local("tar -cvzf {} web_static".format(archive_path))
-        print("web_static packed: {} -> {}Bytes".format(archive_path, os.path.getsize(archive_path)))
-        return archive_path
-    except:
-        print("wtf")
-        return None
+        status = True
+    except Exception:
+        status = False
+    return status
