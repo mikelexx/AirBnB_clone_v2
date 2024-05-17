@@ -24,5 +24,14 @@ def hbnb():
     return "HBNB"
 
 
+@app.route("/c/<text>")
+def c_text_display(text):
+    """
+    Returns: "C" followed by text variable passed.
+    """
+    text = "C " + " ".join(text.split("_"))
+    return text
+
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
