@@ -27,6 +27,9 @@ def states_list():
 
 @app.route("/cities_by_states")
 def cities_by_states():
+    """
+    Returns: html page displaying all states and their cities
+    """
     states_dict = storage.all(State)
     states_cities = {}
     for key, val in states_dict.items():

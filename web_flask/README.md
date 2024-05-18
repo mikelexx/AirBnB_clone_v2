@@ -91,6 +91,7 @@ Write a script that starts a Flask web application:
 guillaume@ubuntu:~/AirBnB_v2$ python3 -m web_flask.2-c_route
 * Running on http://0.0.0.0:5000/ (Press CTRL+C to quit)
 ....
+```
 In another tab:
 ```
 guillaume@ubuntu:~$ curl 0.0.0.0:5000/c/is_fun ; echo "" | cat -e
