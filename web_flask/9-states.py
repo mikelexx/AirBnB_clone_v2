@@ -20,6 +20,9 @@ def close_sqlalchemy_sessions(exc):
 
 @app.route("/states/<id>")
 def state_cities(id):
+    """
+    returns cities of the specified state id in html template
+    """
     states = storage.all(State)
     for key in states:
         if states[key].id == id:
@@ -31,6 +34,9 @@ def state_cities(id):
 
 @app.route("/states")
 def states():
+    """
+    returns all states objects in html template
+    """
     states = storage.all(State)
     return render_template("9-states.html", states=states, id="no_id")
 
