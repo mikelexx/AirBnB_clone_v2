@@ -18,13 +18,6 @@ def close_sqlalchemy_sessions(exc):
     storage.close()
 
 
-@app.route("/states_list")
-def states_list():
-    """
-    returns html page for state objects sorted by name [A-Z].
-    """
-
-
 @app.route("/cities_by_states")
 def cities_by_states():
     """
