@@ -34,7 +34,7 @@ def cities_by_states():
     states_cities = {}
     for key, val in states_dict.items():
         states_cities[val] = val.cities
-    return render_template('8-cities_by_states.py', states=states_cities)
+    return render_template('8-cities_by_states.html', states=states_cities)
 
 
 if __name__ == '__main__':
