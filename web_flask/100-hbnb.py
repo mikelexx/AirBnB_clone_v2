@@ -16,11 +16,16 @@ app.url_map.strict_slashes = False
 
 @app.teardown_appcontext
 def close_sqlalchemy_sessions(exc):
+    """
+    for closing the sessions for sqlalchemy after each request.
+    """
     storage.close()
-
 
 @app.route("/hbnb")
 def hbnb():
+    """ 
+    live hbnb route that returns a full landing page.
+    """
     states = storage.all(State)
     amenities = storage.all(Amenity)
     places = storage.all(Place)
